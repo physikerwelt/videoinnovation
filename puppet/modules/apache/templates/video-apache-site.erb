@@ -1,0 +1,16 @@
+# vim: filetype=apache sts=4 sw=4 autoindent
+#
+# Apache site configuration for MediaWiki
+# This file is managed by Puppet.
+#
+<VirtualHost *>
+    ServerName vagrant
+    ServerAdmin http://www.mediawiki.org/wiki/Vagrant
+    DocumentRoot "/video/www"
+
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+
+</VirtualHost>

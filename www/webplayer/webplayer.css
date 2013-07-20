@@ -1,0 +1,405 @@
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/*body {
+  width: 1400px;
+  height: 1000px; 
+} */
+
+#bodyWrapper {
+  margin: 0;
+  padding: 0;
+  width:100%;
+  height: 100%;
+}
+
+#playerhub {
+    -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  transition: all 1s ease; 
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,1);
+}
+
+.defaultSize {
+  width: 800px;
+  height: 450px;
+}
+
+.maxSize {
+  width: 100%;
+  height: 100%;
+}
+
+.pX {
+  left: 20%;
+  width: 80%;
+}
+
+.pX_fullscreen_collapsed {
+  left: 3%;
+  width: 97%;
+}
+
+.pX_collapsed {
+  left: 20%;
+  width: 80%;
+}
+
+.pY {
+  height: 80%;
+}
+
+.pY_fullscreen_collapsed {
+  height: 97%;
+}
+
+.pY_collapsed {
+  height: 80%;
+}
+
+#playerBottom {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  transition: all 1s ease; 
+  position: absolute;
+  
+  background-color: rgba(0,0,255,1);  
+  overflow: hidden;
+}
+
+.playerBottomExp {
+  top: 80%;
+  height: 20%;
+}
+
+.playerBottomCollapsed_fullscreen {
+  top: 97%;
+  height: 3%;
+}
+
+.playerBottomCollapsed {
+  top: 80%;
+  height: 3%;
+}
+
+#player {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  transition: all 1s ease; 
+  position: absolute;
+  background-color: rgba(0,0,0,1);  
+}
+
+#left {
+  position: absolute;
+  width: 20%;
+  background-color: rgba(0,0,0,1);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  transition: all 1s ease; 
+  font-size: 13px;
+  font-family:Helvetica,sans-serif;
+  color: rgba(255,255,255,0.7);
+  overflow: hidden;
+}
+
+#resizeLeft {
+  padding: 4px;
+  height: 6%;
+  background-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-size: 17px;
+  font-family: Georgia, serif;
+  font-weight: lighter;
+  text-align: left;
+  overflow: hidden;
+  cursor:pointer;  
+}
+
+#contentListDiv {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  transition: all 1s ease; 
+  position: absolute;
+  top: 6%;
+  height: 90%;
+  width:100%;
+}
+
+#contentList {
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+  list-style: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space:  nowrap;
+  cursor:pointer;
+  height: 100%;
+  font-size: 13px;
+  font-family:Helvetica,sans-serif;
+  
+}
+
+#contentList li{
+  min-height: 1.3em;
+  margin: 1% 0 0 1%;
+  overflow: hidden;
+  -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#contentList li:hover{
+  background-color: rgba(255,153,0,0.9);
+  color: rgba(255,255,255,0.8);
+  overflow-y: auto;
+}
+
+
+#searchField {
+  position: absolute;
+  bottom: 0%;
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+#searchField span{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: rgba(255,255,255,0.5);
+  padding: 2px;
+  display: none;
+}
+
+#searchField input{
+  width: 100%;
+  color: rgba(77,140,157,1);
+  background-color: rgba(0,0,0,1);
+  border: none;
+  font-size: 13px;
+  font-family:Helvetica,sans-serif;
+  padding: 2px;
+}
+#searchField input:focus{
+  width: 100%;
+  color: rgba(77,140,157,1);
+  border: 1px solid;
+  outline: none;
+  border-color: rgba(77,140,157,1);
+}
+
+.resizeLeftCollapsed {
+  color: rgba(77,140,157,1) !important;
+}
+
+.leftCollapsed {
+  width: 3%;
+  left: 17%;
+}
+
+.leftCollapsed_fullscreen {
+  width: 3%;
+  left: 0%;
+  overflow: hidden;  
+}
+
+.opacity30 {
+  opacity: 0.3;
+}
+
+
+
+#resizeLeft:hover {
+  color: rgba(77,140,157,1);
+}
+
+  /*
+#searchField input:focus + span {
+    display:none;
+} */
+
+
+
+.firstLevel {
+  padding: 1% 1% 1% 3%;
+}
+
+.secondLevel {
+  padding: 0 0 0 8%;
+}
+
+.collapsedSlide {
+  display: none;
+}
+
+.fadedSearchEntry {
+  display: none;
+}
+
+.searchHighlight {
+  color: rgba(77,140,157,1);
+  font-weight: bold;
+}
+
+
+#triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 100px solid red;
+}
+
+#triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid red;
+}
+
+.activeElement {
+  background-color: rgba(0,204,255,0.9); /*rgba(255,255,255,0.3);*/ /* vs 0.5 */
+  color: rgba(255,255,255,1);
+}
+
+#resizePlayerhub {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0,204,255,0.9);
+  bottom: 0;
+  left: 620px;
+  overflow: hidden;
+}
+
+.resizeBorder {
+  border: 1px solid black;
+}
+
+.closed {
+  display: none;
+}
+
+.open {
+  display: block;
+}
+
+#playerOverlay {
+  z-index: 5;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  width: 50%;
+  height: auto;
+  background-color: rgba(0,0,0,0.8);
+  color: rgba(255,255,255,0.8);
+  padding: 1%;
+  border: 1px solid black;
+}
+
+#playerOverlay p {
+  width: 100%;
+  margin-left:auto;
+  margin-right:auto;
+  font-size: 13px;
+  font-family:Helvetica,sans-serif;
+}
+
+#playerOverlay input {
+  width: 100%;
+  border: none;
+  padding: 2px;  
+}
+
+#closeOverlay {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  cursor: pointer;
+}
+
+#transcription {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,1);
+  font-size: 15px;
+  font-family:Helvetica,sans-serif;
+  color: rgba(255,255,255,0.8);
+  padding: 0 1%;
+  overflow: hidden;
+}
+
+#resizeTranscription {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#resizeTranscription:hover {
+  color: rgba(77,140,157,1);
+}
+
+#transcription p {
+  margin: 1%;
+}
+
+#t_last {
+  min-height: 1em;
+  background: -webkit-linear-gradient(#000000, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#t_current {
+  min-height: 1em;
+}
+
+#t_next {
+  min-height: 1em;
+  background: -webkit-linear-gradient(#ffffff, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* Scrollbar
+http://css-tricks.com/forums/discussion/comment/42766/#Comment_42766
+----------------------------------------------------------------------------------------------------*/  
+
+@media only screen and (-webkit-min-device-pixel-ratio: 0) and (min-device-width: 1025px) {
+  
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-button:start:decrement,
+  ::-webkit-scrollbar-button:end:increment {
+    display: none;
+    height: 2px;
+  }
+  
+  ::-webkit-scrollbar-button:vertical:increment {
+    background-color: #fff;
+  }
+  
+  ::-webkit-scrollbar-track-piece {
+    background-color: rgba(255,255,255,0.1);
+    -webkit-border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: rgba(255,255,255,0.5);
+    -webkit-border-radius: 3px;
+  }
+}

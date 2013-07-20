@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Upload files</title>
+    <!--- <link rel="stylesheet" href="upload.css"> -->
+  </head>
+  <body>
+    <form action="upload_file.php" method="post" enctype="multipart/form-data">
+    <div id="input">
+      
+      <label for="video">Videodatei:</label><input type="file" name="video" id="video"><br>
+      <label for="pdf">PDF-Folien:</label><input type="file" name="pdf" id="pdf"><br>
+      <label for="transcription">Transkription:</label><input type="file" name="transcription" id="transcription"><br>
+      <label for="agenda">Titel der Agenda-/Übersichts-/Gliederungsfolie:</label><input type="text" name="agenda" id="agenda"><br>
+      <label for="pdfLink">Link zu den PDF-Folien:</label><input type="text" name="pdfLink" id="pdfLink"><br>
+      
+      <div id="inputExpert">
+        <label for="x">X-Koordinate des Titels:</label><input type="text" name="x" id="x"><br>
+        <label for="y">Y-Koordinate des Titels:</label><input type="text" name="y" id="y"><br>
+        <label for="width">Breite des Titels:</label><input type="text" name="width" id="width"><br>
+        <label for="height">Höhe des Titels:</label><input type="text" name="height" id="height"><br>
+      </div>
+      
+      <input type="submit" name="submit" value="Submit">
+      
+    </div> 
+    </form>
+    <!--- <script type="application/dart" src="upload.dart"></script> -->
+    <!--- <script src="packages/browser/dart.js"></script> -->
+  </body>
+</html>

@@ -28,7 +28,7 @@ if ($video["error"] > 0 && $pdf["error"] > 0 && $transcription["error"] > 0) {
 	$config = '{"path":'.$path.', "x":'.$x.',"y":'.$y.',"width":'.$width.',"height":'.$height.',"agenda":'.$agenda.',"pdfLink":'.$pdfLink.'}';
 	file_put_contents($path."configuration.json",$config);
 	
-	exec();
+	exec("VideoSkript.bat ".$folderName);
 }
 
 ?> 

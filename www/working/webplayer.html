@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+  
+  <!-- iframe allowfullscreen -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../webplayer/webplayer.css">
+    <script type="text/javascript" src="../../webplayer/jwplayer.js"></script>
+  </head>
+  <body>
+    <div id="bodyWrapper">
+      
+      <div id="playerhub" class="defaultSize">
+            <div id="left" class="pY">
+              <div id="resizeLeft">{{localization.content}} <span style="float:right"> >>> </span></div>
+              <div id="contentListDiv"><ul id="contentList"></ul></div>
+              <div id="searchField"><input type="text" placeholder="{{localization.search}}..." list="inputAutocomplete"><datalist id="inputAutocomplete"></datalist></div>
+            </div> <!-- /left -->
+            <div id="player" class="pY pX">
+              <div id="playerOverlay" class="closed">
+                <span id="closeOverlay"> {{localization.close}} </span>
+                <p>
+                  <label for="urlLinkTime">{{localization.urlLinkTime}}: </label><input id="urlLinkTime" type="text">
+                </p>
+                <p>
+                  <label for="urlLinkSlide">{{localization.urlLinkSlide}}: </label><input id="urlLinkSlide" type="text">
+                </p>
+                <p>
+                  <label for="urlLinkToPdf">{{localization.urlLinkToPdf}}: </label><input id="urlLinkToPdf" type="text">
+                </p>
+              </div>
+              <div id="jsplayer"></div>
+            </div> <!-- /player -->
+          
+        <div id="playerBottom" class="pX playerBottomExp">
+            <div id="transcription">
+              <span id="resizeTranscription">{{localization.close}}</span>
+              <p id="t_last"></p> <!--last transcription sentence -->
+              <p id="t_current"></p> <!--current -->
+              <p id="t_next"></p> <!--next -->
+            <div>
+        </div> <!-- /playerBottom -->
+      
+      </div><!-- /playerHub -->
+        
+    </div><!-- /bodyWrapper -->
+
+    <script type="application/dart" src="../../webplayer/webplayer.dart"></script>
+    <script src="../../webplayer/packages/browser/dart.js"></script>
+    <script src="../../webplayer/packages/browser/interop.js"></script> 
+    <script type="text/javascript">
+      var playerWidth = 640;
+      var playerHeight = 360;
+      var startParam = 0.0;
+      jwplayer("jsplayer").setup({
+        width: playerWidth,
+        height: playerHeight,
+        //flashplayer: "player.swf",
+        provider:'http',
+        file: "video_out_sd.mp4?start="+startParam,
+        startparam: "starttime",
+        //plugins: {
+        //  'hd-2': {
+        //    file: "video_out_hd.mp4"
+        //  }
+        //}
+        //,skin: 'glow.zip'
+      });
+      
+      var icon = "iframe_fullscreen.png";
+      var tooltip = "fullscreen mode";
+      
+      var baseUrl = '../';
+      
+      var pdfUrl = 'http://MPGI5_Abschluss.pdf';
+      var slidecontentUrl = baseUrl+'slidecontent.json';
+      var transcriptionUrl = baseUrl+'transcription.json';
+      var keywordsUrl = baseUrl+'keywords.json';
+      var localizationUrl = baseUrl+'localization.json';
+      
+     
+    </script>
+  </body>
+</html>

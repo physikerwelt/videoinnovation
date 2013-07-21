@@ -1,0 +1,41 @@
+sudo apt-get update
+sudo apt-get install build-essential checkinstall git libfaac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libsdl1.2-dev libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev texi2html yasm zlib1g-dev subversion poppler-utils imagemagick cmake libgtk2.0-dev python-numpy
+
+svn co https://classx.svn.sourceforge.net/svnroot/classx/classXEncoder/x264 x264
+cd x264
+./configure --enable-shared
+make
+sudo make install
+sudo ldconfig
+cd ..
+
+svn co https://classx.svn.sourceforge.net/svnroot/classx/classXEncoder/ffmpeg ffmpegX
+cd ffmpegX
+./configure --enable-gpl --enable-libx264
+make
+sudo make install
+cd ..
+
+wget sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.6.1/opencv-2.4.6.1.tar.gz
+tar xfvz opencv-2.4.6.1.tar.gz
+cd opencv-2.4.6.1
+cmake -D CMAKE_BUILD_TYPE=RELEASE -d BUILD_NEW_PYTHON_SUPPORT=ON -D CMAKE_INSTALL_PREFIX=/usr/local ./
+make
+sudo make install
+cd..
+
+svn co https://classx.svn.sourceforge.net/svnroot/classx/slideRecognition slideRecognition
+
+cd slideRecognition
+make clean
+make all
+cd ..
+
+mkdir pipeline
+mkdir pipeline/slideSynchronization
+cp /home/vagrant/install/slideRecognition/slideChangeDetect/changeDetect /home/vagrant/install/pipeline/slideSynchronization/
+cp /home/vagrant/install/slideRecognition/slideMatch/slideMatch /home/vagrant/install/pipeline/slideSynchronization/
+cp /home/vagrant/install/slideRecognition/SIFT-V0.8.1/siftpp/sift /home/vagrant/install/pipeline/slideSynchronization/
+cp /home/vagrant/install/slideRecognition/image_matching/image_matching /home/vagrant/install/pipeline/slideSynchronization/
+cp /home/vagrant/share/processExt_extract_sift_fr_jpg /home/vagrant/install/pipeline/slideSynchronization/
+

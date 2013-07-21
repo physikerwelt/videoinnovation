@@ -25,11 +25,30 @@ if ($video["error"] > 0 && $pdf["error"] > 0 && $transcription["error"] > 0) {
 	$path = $_SERVER['DOCUMENT_ROOT']."/working/".basename($video["name"],".mov");
 	
 	move_uploaded_file($video["tmp_name"], $path."/VL01.mov");
-	move_uploaded_file($pdf["tmp_name"], $path."/slide.pdf");
+	move_uploaded_file($pdf["tmp_name"], $path."/slides.pdf");
 	move_uploaded_file($transcription["tmp_name"], $path."/transcription.json");
 	$config = '{"path":'.$path.', "x":'.$x.',"y":'.$y.',"width":'.$width.',"height":'.$height.',"agenda":'.$agenda.',"pdfLink":'.$pdfLink.'}';
 	file_put_contents($path."/configuration.json",$config);
-	
+	$configArray = array();
+	$configArray[0] = $path;
+	$configArray[1] = $x;
+	$configArray[2] = $y;
+	$configArray[3] = $width;
+	$configArray[4] = $height;
+	$configArray[5] = $agenda;
+	$configArray[6] = $pdfLink;
+	$configTxt = $path."\r\n".$x."\r\n".$y."\r\n".$width."\r\n".$height."\r\n".$agenda."\r\n".$pdfLink;
+	file_put_contents($_SERVER['DOCUMENT_ROOT']."/working/config.txt",implode("\r\n", $configArray));
+	/*
+	$fp = fopen($path."/config.txt", "a");
+    fputs($path, "\r\n");
+	fputs($x, "\r\n");
+	fputs($y, "\r\n");
+	fputs($width, "\r\n");
+	fputs($height, "\r\n");
+	fputs($agenda, "\r\n");
+	fputs($pdfLink, "\r\n");
+    fclose($fp); */
 	exec("VideoSkript.bat ".$folderName);	
 }
 

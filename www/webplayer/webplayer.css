@@ -356,6 +356,7 @@
 
 #t_last {
   min-height: 1em;
+  max-height: 1em;
   background: -webkit-linear-gradient(#000000, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

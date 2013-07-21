@@ -39,7 +39,7 @@ if ($video["error"] > 0 && $pdf["error"] > 0 && $transcription["error"] > 0) {
 	$configArray[6] = $pdfLink;
 	$configArray[7] = "/".$folderName;
 	file_put_contents($_SERVER['DOCUMENT_ROOT']."/working/config.txt",implode("\r\n", $configArray));
-	exec("VideoSkript.bat ".$folderName);	
+	exec($_SERVER['DOCUMENT_ROOT']."/working/VideoSkript.bat ".$folderName);	
 }
 
 ?> 

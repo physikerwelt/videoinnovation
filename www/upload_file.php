@@ -38,18 +38,7 @@ if ($video["error"] > 0 && $pdf["error"] > 0 && $transcription["error"] > 0) {
 	$configArray[5] = $agenda;
 	$configArray[6] = $pdfLink;
 	$configArray[7] = "/".$folderName;
-	$configTxt = $path."\r\n".$x."\r\n".$y."\r\n".$width."\r\n".$height."\r\n".$agenda."\r\n".$pdfLink;
 	file_put_contents($_SERVER['DOCUMENT_ROOT']."/working/config.txt",implode("\r\n", $configArray));
-	/*
-	$fp = fopen($path."/config.txt", "a");
-    fputs($path, "\r\n");
-	fputs($x, "\r\n");
-	fputs($y, "\r\n");
-	fputs($width, "\r\n");
-	fputs($height, "\r\n");
-	fputs($agenda, "\r\n");
-	fputs($pdfLink, "\r\n");
-    fclose($fp); */
 	exec("VideoSkript.bat ".$folderName);	
 }
 

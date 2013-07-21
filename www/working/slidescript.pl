@@ -4,27 +4,35 @@ use File::Copy;
 use POSIX;
 
 my $Pipeline_Resources = "/home/vagrant/install/pipeline"; # ClassX programs
+my $parasfile = "/home/vagrant/share/config.txt";
 
+open (PARFILE, $parasfile);
+my @paras = <PARFILE>;
+chomp @paras;
 
-#input arguments
-my $inputvideo = $ARGV[0];				#Videodatei
-my $slideDeckFile = $ARGV[1];				#Folien
-my $outputFolder = $ARGV[2];				#Ordner fuer Ausgabedatei
+my $inputvideo = "/home/vagrant/share$paras[7]/video_out_sd.mp4";				#Videodatei
+my $slideDeckFile = "/home/vagrant/share$paras[7]/slide.pdf";				#Folien
+my $outputFolder = "/home/vagrant/share$paras[7]";				#Ordner fuer Ausgabedatei
 my $workFolder = "$outputFolder/working";		#Ordner fuer temporaere Dateien
 
 #Position des Titels in den Slides
-my $x = $ARGV[3];			#x-coordinate of the crop area top left corner 
-my $y = $ARGV[4];			#y-coordinate of the crop area top left corner
-my $W = $ARGV[5];			#width of crop area in pixels
-my $H = $ARGV[6];			#height of crop area in pixels
+my $x = $paras[1];			#x-coordinate of the crop area top left corner 
+my $y = $paras[2];			#y-coordinate of the crop area top left corner
+my $W = $paras[3];			#width of crop area in pixels
+my $H = $paras[4];			#height of crop area in pixels
 
 #Position des Inhalts in den Slides
-my $cx = $ARGV[7];			#x-coordinate of the crop area top left corner 
-my $cy = $ARGV[8];			#y-coordinate of the crop area top left corner
-my $cW = $ARGV[9];			#width of crop area in pixels
-my $cH = $ARGV[10];			#height of crop area in pixels
+my $cx = 0;			#x-coordinate of the crop area top left corner 
+my $cy = $y+$H;			#y-coordinate of the crop area top left corner
+my $cW = 100000;			#width of crop area in pixels
+my $cH = 100000;			#height of crop area in pixels
 
-my $chapterSlide = $ARGV[11];		#Titel der Kapitelfolie
+my $chapterSlide = $paras[5];		#Titel der Kapitelfolie
+my $readagenda=0;
+if($chspterSlide ne ""){
+	$readagenda=1;
+}
+close(PARFILE);
 
 # Create output streaming directory if it does not exist.
 if(!(-e "$outputFolder"))
@@ -158,7 +166,7 @@ while(($c=getc(TITLEFILE)) ne ""){
 	if($c eq ""){
 		$countSlide = $countSlide +1;
 		push(@array, $title);	#Titel in Array speichern
-		if($readChapter && ($title eq $chapterSlide)){	#Kapitelnamen sollen ausgelesen werden
+		if($readagenda==1 && $readChapter && ($title eq $chapterSlide)){	#Kapitelnamen sollen ausgelesen werden
 			$readChapter = 0;
 
 			`pdftotext -q -f $countSlide -l $countSlide -x $cx -y $cy -W $cW -H $cH -nopgbrk -layout $slideFile '$workDir/chapter.txt'`;#Kapitel aus Folien auslesen
@@ -247,7 +255,7 @@ for($p=1; $p<=$countSlide; $p++){
 			my $cont = $content[$currentEvent[1]];
 			my $page = $currentEvent[1]+1;
 
-			if(($name eq $chapterSlide) && $lastChapterPage < $page){
+			if($readagenda==1 && ($name eq $chapterSlide) && $lastChapterPage < $page){
 				$lastChapterPage = $page;
 				if($in_chapter==1){
 					print MYFILE "]}";

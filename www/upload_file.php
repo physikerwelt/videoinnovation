@@ -22,7 +22,7 @@ if ($video["error"] > 0 && $pdf["error"] > 0 && $transcription["error"] > 0) {
 } else {
 	$folderName = basename($video["name"],".mov");
 	mkdir($_SERVER['DOCUMENT_ROOT']."/working/".$folderName);
-	$path = $_SERVER['DOCUMENT_ROOT']."/working/".$folderName);
+	$path = $_SERVER['DOCUMENT_ROOT']."/working/".$folderName;
 	
 	move_uploaded_file($video["tmp_name"], $path."/VL01.mov");
 	move_uploaded_file($pdf["tmp_name"], $path."/slides.pdf");

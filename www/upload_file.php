@@ -25,7 +25,7 @@ if ($video["error"] > 0 && $pdf["error"] > 0 && $transcription["error"] > 0) {
 	$path = $_SERVER['DOCUMENT_ROOT']."/working/".basename($video["name"],".mov");
 	
 	move_uploaded_file($video["tmp_name"], $path."/VL01.mov");
-	move_uploaded_file($pdf["tmp_name"], $path."/pdf.pdf");
+	move_uploaded_file($pdf["tmp_name"], $path."/slide.pdf");
 	move_uploaded_file($transcription["tmp_name"], $path."/transcription.json");
 	$config = '{"path":'.$path.', "x":'.$x.',"y":'.$y.',"width":'.$width.',"height":'.$height.',"agenda":'.$agenda.',"pdfLink":'.$pdfLink.'}';
 	file_put_contents($path."/configuration.json",$config);

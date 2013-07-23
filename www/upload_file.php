@@ -29,6 +29,8 @@ if ($video["error"] > 0 && $pdf["error"] > 0 && $transcription["error"] > 0) {
 	move_uploaded_file($transcription["tmp_name"], $path."/transcription.json");
 	$config = '{"path":'.$path.', "x":'.$x.',"y":'.$y.',"width":'.$width.',"height":'.$height.',"agenda":'.$agenda.',"pdfLink":'.$pdfLink.'}';
 	file_put_contents($path."/configuration.json",$config);
+	$meta = '{"pdfLink:"'.$pdfLink.'}';
+	file_put_contents($path."/meta.json",$meta);
 	$configArray = array();
 	$configArray[0] = $path;
 	$configArray[1] = $x;

@@ -35,9 +35,9 @@ void main() {
   HTML.HttpRequest.getString(JS.context.transcriptionUrl).then((String json) => (buildTranscription(parseJSONList(json))));
   HTML.HttpRequest.getString(JS.context.keywordsUrl).then((String json) => (fillAutocompleteList(parseJSONList(json))));
   HTML.HttpRequest.getString(JS.context.localizationUrl).then((String json) => (localization.update(parseJSON(json))));  
+  HTML.HttpRequest.getString(JS.context.metaUrl).then((String json) => (pdfUrl = parseJSON(json)['pdfLink']));
   
-  
-  pdfUrl = (JS.context.pdfUrl).toString();
+  //pdfUrl = (JS.context.pdfUrl).toString();
   player = new PlayerWrapper();
   
   overlay = new Overlay();

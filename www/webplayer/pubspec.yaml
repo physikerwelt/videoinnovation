@@ -1,0 +1,6 @@
+name: Webplayer
+description: Webplayer for jwplayer version 6
+dependencies:
+  browser: any
+  js: any
+  web_ui: any
